@@ -1,6 +1,10 @@
+/**
+ * jsx 반복 처리(3) - map() 함수를 사용한 배열 원소 탐색 축약형
+ */
 import React from "react";
 
 const Loop3 = () => {
+  // 화면에 표시할 데이터
   const seasons = ["봄", "여름", "가을", "겨울"];
 
   return (

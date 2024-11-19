@@ -1,11 +1,11 @@
 /**
- * 기본 표현식 연습
+ * JSX조건 분기(1) - 함수를 통한 리턴값 분기
  */
 
 import React from "react";
 
 const If1 = () => {
-  /** 조건ㄴ에 따라 다른 jsx를 반환하는 함수 정의 */
+  /** 조건에따라 다른 jsx를 반환하는 함수 정의 */
   const btnLogin = (isLogin) => {
     if (isLogin === true) {
       return (<button type='button'>Logout</button>);
@@ -14,6 +14,7 @@ const If1 = () => {
     }
   };
 
+  // 조건에 따라 다른 결과를 표시하는 첫 번째 방법은 호출하는 함수안에서 판별
   return (
     <div>
       <h1>If1</h1>

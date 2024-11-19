@@ -1,3 +1,7 @@
+/**
+ * jsx 반복 처리(1) - 함수를 통한 반복문 활용
+ */
+
 import React from "react";
 
 const Loop1 = () =>{
