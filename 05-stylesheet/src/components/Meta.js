@@ -12,6 +12,11 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 // 미리보기 이미지 샘플
 import sample from "../assets/img/sample.jpeg";
 
+/**
+ * seo 처리 컴포넌트
+ * @param props 
+ * @returns {jsx.element}
+ */
 const Meta = ({
   title = "React Example",
   description = "React.js 예제입니다",
