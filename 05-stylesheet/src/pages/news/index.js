@@ -21,7 +21,7 @@ const News = () => {
     </nav>
 
     <Routes>
-      
+      {/* Route에 연결된 컴포넌트에 props 전달 */}
       <Route path='news_card' element={<NewsCard news={NewsData}></NewsCard>}></Route>
       <Route path='news_list' element={<NewsList news={NewsData}></NewsList>}></Route>
 

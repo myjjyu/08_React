@@ -46,6 +46,8 @@ line-height: 100px;
 cursor: pointer;
 transition: all 0.1s ease-in;
 
+
+// 색상값이 전달된 경우 해당값 사용, 그렇지 않을 경우 BLACK 을 기본값으로 사용
 color: ${(props) => props.$color || 'black'};
 
   &:hover{
@@ -54,6 +56,8 @@ color: ${(props) => props.$color || 'black'};
     color: #fff;
   }
 
+
+  //PROPS 값에 대한 조건절 처리
   ${(props)=> props.$number % 2 === 1 && css`
               font-weight: bold;
               font-style:italic;
@@ -65,9 +69,11 @@ color: ${(props) => props.$color || 'black'};
 import Meta from '../../components/Meta';
 
 const StyledComponent = () => {
-
+// 색상 이름이나 색상 코드에 대한 배열
 const myColors = ['red', 'green', 'blue', 'purple', 'orange', 'yellow', 'pink'];
 
+
+// 배열 전체를 100 으로 봤을때 하나당 몇 % 인지 계산
 const myWidth = 100 / myColors.length + '%';
 
   return (
@@ -78,6 +84,7 @@ const myWidth = 100 / myColors.length + '%';
 
     <h3>단순 태그처럼 사용</h3>
     <MyGridContainer>
+      {/* MyGridItem 에게 weight라는 이름의 변수값 전달  */}
       <MyGridItem width={'30%'}>
           <MyBox>Item1</MyBox>
       </MyGridItem>
@@ -104,6 +111,7 @@ const myWidth = 100 / myColors.length + '%';
       {myColors.map((item, index) => {
         return (
           <MyGridItem key={index} width={myWidth}>
+            {/* StyledComponent로 전달하는 PROPS는 `$`를 이름 앞에 명시한다 */}
             <MyBox $color={item} $number={index}>{item}</MyBox>
           </MyGridItem>
         )

@@ -1,5 +1,6 @@
 import React from "react";
 
+//외부 CSS파일 참조 --> 참조변수 이름을 지정하지 않는다.
 import '../../assets/css/mystyle.css';
 
 // 직접 정의한 컴포넌트 참조
