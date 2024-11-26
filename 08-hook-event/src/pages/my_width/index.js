@@ -1,17 +1,21 @@
-import React, {memo} from "react";
+/**
+ * 직접 Hook 함수 정의하기
+ * --> 리액트 스타일이 모듈화
+ */
 
-import styled from 'styled-components';
+import React, { memo } from "react";
 
-const MyWidthContainer = styled.div`
+import { useMyWidth } from "../../hooks/MyHooks";
 
-`;
+const MyWidth = memo(() => {
+  const myWidth = useMyWidth();
 
-const MyWidth=memo(() => {
- return (
-<MyWidthContainer>
-<h2>MyWidth</h2>
-</MyWidthContainer>
-);
+  return (
+    <div>
+      <h2>MyWidth</h2>
+      <h2>windowWidth : {myWidth}</h2>
+    </div>
+  );
 });
 
 export default MyWidth;

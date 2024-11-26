@@ -30,7 +30,7 @@ const DateRange1 = memo(() => {
 
       <div>
         <button type="button" onClick={e => {
-          // setter 함수를 통해 json 형태의 상태값을 갱신할때는 반드시 원래의 구조와 동일한 객체를 사용해야한다
+          // setter 함수를 통해 json 형태의 상태값을 갱신할때는 반드시 원본 객체를 직접 변경하지 않고, 새로운 객체를 만들어서 업데이트해야 한다
           const newDate = {...myDate};
 
           // dayjs 객체를 사용ㅎ여 15일전을 계산하여 설정함
