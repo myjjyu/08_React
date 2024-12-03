@@ -1,9 +1,6 @@
 import React, { memo, useState, useEffect } from "react";
-
 import styled from "styled-components";
-
 import axiosHelper from "../../helpers/AxiosHelper";
-
 import Table from "../../components/Table";
 import Spinner from "../../components/Spinner";
 import { SexLabel, EmbarkedLabel, SurvivedLabel } from "./Labels";
@@ -11,7 +8,7 @@ import { SexLabel, EmbarkedLabel, SurvivedLabel } from "./Labels";
 const TitanicContainer = styled.div``;
 
 const Titanic = memo(() => {
-  //Ajax 결과를 저장할 상태변수
+  // Ajax 결과를 저장할 상태변수
   const [titanicData, setTitanicData] = useState([]);
 
   // 로딩 상태를 처리할 상태변수
@@ -37,6 +34,7 @@ const Titanic = memo(() => {
       setLoading(false);
     })();
   }, []);
+
   return (
     <TitanicContainer>
       <h2>Titanic</h2>
@@ -64,17 +62,17 @@ const Titanic = memo(() => {
                 <td>{v.id}</td>
                 <td>{v.name}</td>
                 {/* 성별을 표시하기 위한 텍스트 라벨을 사용해야한다 ▼ */}
-                <td><SexLabel sex={v.sex} /></td> 
+                <td><SexLabel sex={v.sex} /></td>
                 <td>{v.age}</td>
                 <td>{v.sibsp + v.parch}</td>
                 <td>{v.pclass}등급</td>
                 <td>{v.cabin}</td>
                 <td>{v.ticket}</td>
                 <td>{v.fare}</td>
-                 {/* 탑승지를 표시하기 위한 텍스트 라벨을 사용해야한다 ▼ */}
-                 <td><EmbarkedLabel embarked={v.embarked} /></td> 
-                {/* 생존여부를 표시하기 위한 텍스트 라벨을 사용해야한다 (ture & false) 라서 문자열 표시안되기 때문에.. ▼ */}
-                <td><SurvivedLabel survived={v.survived} /></td> 
+                {/* 탑승지를 표시하기 위한 텍스트 라벨을 사용해야한다 ▼ */}
+                <td><EmbarkedLabel embarked={v.embarked} /></td>
+                {/* 생존여부를 표시하기 위한 텍스트 라벨을 사용해야한다 (true & false) 라서 문자열 표시안되기 때문에.. ▼ */}
+                <td><SurvivedLabel survived={v.survived} /></td>
               </tr>
             );
           })}
