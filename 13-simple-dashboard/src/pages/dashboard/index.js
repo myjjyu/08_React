@@ -7,12 +7,11 @@ import { getList } from "../../slices/TitanicSlice";
 
 /** 컴포넌트 참조 */
 import Spinner from "../../components/Spinner";
-
-import CountUp from "react-countup";
-//참고주소 => https://www.npmjs.com/package/react-countup
+import ScoreBoard from "./ScoreBoard";
+import GraphBoard from "./GraphBoard";
 
 const DashboardContainer = styled.div`
-  .counter-box {
+  /* .counter-box {
     display: flex;
     justify-content: space-between;
 
@@ -55,7 +54,7 @@ const DashboardContainer = styled.div`
         }
       }
     }
-  }
+  } */
 `;
 
 const Dashboard = memo(() => {
@@ -102,11 +101,14 @@ const Dashboard = memo(() => {
         </div>
       )}
 
+      <ScoreBoard />
+      <GraphBoard />
+
       {/* stringify : 데이터를 잘 가져 왔는지 확인(임시) => 받아온 데이터를 문자열로 변환하여 출력 */}
       {/* {item && <p>{JSON.stringify(item)}</p>} */}
 
       <div className="counter-box">
-        <div className="my-counter">
+        {/* <div className="my-counter">
           <h2>전체 탑승객 수</h2>
           <CountUp
             start={1} //시작값
@@ -152,7 +154,7 @@ const Dashboard = memo(() => {
             scrollSpyDelay={1000} //스크롤에 의해 화면에 표시된 후 딜레이 시간
             className="my-counter-number"
           />
-        </div>
+        </div> */}
       </div>
     </DashboardContainer>
   );
