@@ -6,6 +6,8 @@
 import React, { memo, useMemo } from "react";
 
 import styled from "styled-components";
+/** 반응형 관련 */
+import mq from "../../components/MediaQuery";
 
 /** 리덕스 관련 */
 import { useSelector } from "react-redux";
@@ -29,11 +31,13 @@ import { Bar } from "react-chartjs-2";
 Chart.register(CategoryScale, LinearScale, Title, Tooltip, Legend, BarElement);
 
 const Graph1Container = styled.div`
-  /* background-color: #06f2; */
-  flex: 1 0 50%;
+  width: 50%;
+  // 반응형 css
+  ${mq.maxWidth('md')`
+  width: 100%;
+  `}
 
   .container {
-    /* background-color: #06f6; */
     margin: 10px;
     height: 300px;
   }
@@ -45,18 +49,21 @@ const Graph1 = memo(() => {
 
   /** 연령별 탑승객 현황 */
   // 일반프로그램에서 쓰는 자료구조임
+  // 연령대, 인원수
   const { keys, values } = useMemo(() => {
     if (!item) {
       return { keys: null, values: null };
     }
 
+    console.group("Graph1");
+
     const ageData = item.reduce((acc, cur) => {
       const ageLevel = `${parseInt(cur.age / 10) * 10}대`;
 
       if (acc[ageLevel] == undefined) {
-          acc[ageLevel] = 1;
+        acc[ageLevel] = 1;
       } else {
-          acc[ageLevel]++;
+        acc[ageLevel]++;
       }
 
       return acc;
@@ -73,52 +80,57 @@ const Graph1 = memo(() => {
     const result = { keys, values };
     console.log(result);
 
+    console.groupEnd();
+
     return result;
   }, [item]);
 
   return (
     <Graph1Container>
       <div className="container">
-
-      {/* {item && <p>{JSON.stringify(item).substring(0, 50)}</p>} */}
-      {/* {keys && JSON.stringify(keys)}
+        {/* {item && <p>{JSON.stringify(item).substring(0, 50)}</p>} */}
+        {/* {keys && JSON.stringify(keys)}
       <br />
       {values && JSON.stringify(values)} */}
 
-      <Bar
-        data={{
-          labels: keys, //x축
-          datasets: [
-            {
-              label: "명",
-              data: values,
-              backgroundColor: "rgba(255, 99, 132, 0.5)",
-              borderColor: "rgba(255, 99, 132, 1)",
-              borderWidth: 1,
-            },
-          ],
-        }}
-        options={{
-          // 반응형 기능 사용
-          responsive: true,
-          // 세로 높이를 스스로 설정 (false인 경우 부모에게 맞춤)
-          maintainAspectRatio: false,
-          plugins: {
-            // 범주의 위치
-            legend: {
-              position: "bottom",
-            },
-            title: {
-              display: true,
-              text: "연령별 탑승객 집계",
-              font: {
-                size: 18,
-                color: "#000",
+        {/* 데이터가 있을때만 출력하도록 처리 */}
+        {keys && values && (
+          <Bar
+            data={{
+              labels: keys, //x축
+              datasets: [
+                {
+                  label: "명",
+                  data: values,
+                  backgroundColor: "rgba(255, 99, 132, 0.5)",
+                  borderColor: "rgba(255, 99, 132, 1)",
+                  borderWidth: 1,
+                },
+              ],
+            }}
+            options={{
+              // 반응형 기능 사용
+              responsive: true,
+              // 세로 높이를 스스로 설정 (false인 경우 부모에게 맞춤)
+              maintainAspectRatio: false,
+              plugins: {
+                // 범주의 위치
+                legend: {
+                  position: "bottom",
+                },
+                // 제목설정
+                title: {
+                  display: true,
+                  text: "연령별 탑승객 집계",
+                  font: {
+                    size: 18,
+                    color: "#000",
+                  },
+                },
               },
-            },
-          },
-        }}
-      ></Bar>
+            }}
+          ></Bar>
+        )}
       </div>
     </Graph1Container>
   );
