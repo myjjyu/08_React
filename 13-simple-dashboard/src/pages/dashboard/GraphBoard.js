@@ -7,6 +7,7 @@ import Graph1 from "./Graph1";
 import Graph2 from "./Graph2";
 import Graph3 from "./Graph3";
 import Graph4 from "./Graph4";
+import Graph5 from "./Graph5";
 
 /** 리덕스 관련 */
 //import { useSelector, useDispatch } from "react-redux";
@@ -29,6 +30,7 @@ const GraphBoard = memo(() => {
       <Graph2></Graph2>
       <Graph3></Graph3>
       <Graph4></Graph4>
+      <Graph5></Graph5>
 
       {/* {item && <p>{JSON.stringify(item)}</p>} */}
     </GraphBoardContainer>
