@@ -47,6 +47,7 @@ const Graph5 = memo(() => {
   const { item } = useSelector((state) => state.TitanicSlice);
 
   /** 객실등급(1,2,3)별 탑승객, 생존, 사망집계 */
+  // 전채탑승객수, 전체새존자수, 전체사망자수 
   const { passingers, survived, dead } = useMemo(() => {
     if (!item) {
       return { passingers: [0, 0, 0], survived: [0, 0, 0], dead: [0, 0, 0] };
@@ -54,9 +55,13 @@ const Graph5 = memo(() => {
 
     const pclassData = item.reduce(
       (acc, cur) => {
+
+        // 각각의 등급별 탑승객수를 증가시킨다
         const pclass = cur.pclass;
         acc.passingers[pclass - 1]++;
 
+        // 생존자 또는 사망자에 따라서 각각의 배열에 값을 증가시킨다
+        // 생존자인 경우 survived +1 그렇지않으면? dead +1
         if (cur.survived) {
           acc.survived[pclass - 1]++;
         } else {
@@ -89,12 +94,12 @@ const Graph5 = memo(() => {
                   data: passingers,
                   backgroundColor: [
                     "rgba(255, 99, 132, 0.6)",
-                    "rgba(54, 99, 132, 0.6)",
+                    "rgba(54, 162, 235, 0.6)",
                     "rgba(255, 206, 132, 0.6)",
                   ],
                   borderColor: [
                     "rgba(255, 99, 132, 1)",
-                    "rgba(54, 99, 132, 1)",
+                    "rgba(54, 162, 235, 1)",
                     "rgba(255, 206, 132, 1)",
                   ],
                   borderWidth: 1,
