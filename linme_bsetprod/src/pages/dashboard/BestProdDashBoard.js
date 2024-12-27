@@ -76,14 +76,14 @@ const BestProdDashBoard = memo(() => {
         <div className="graph-select">
           기간 설정 :&nbsp;
           <select value={selectedGraph} onChange={handleGraphChange}>
-            <option value="month">월 Top10</option>
-            <option value="week">주 TOP5</option>
+            <option value="monthly">월 Top10</option>
+            <option value="weekly">주 TOP5</option>
           </select>
         </div>
 
         {/* 선택된 그래프를 조건부로 렌더링 */}
-        {selectedGraph === "month" && <BestProdMGraph />}
-        {selectedGraph === "week" && <BestProdWGraph />}
+        {selectedGraph === "monthly" && <BestProdMGraph />}
+        {selectedGraph === "weekly" && <BestProdWGraph />}
       </div>
     </BestProdDashBoardContainer>
   );
