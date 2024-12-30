@@ -14,40 +14,45 @@ import BestProdMGraph from "./BestProdMGraph";
 import BestProdWGraph from "./BestProdWGraph";
 
 const BestProdDashBoardContainer = styled.div`
+  padding: 20px;
   display: flex;
   flex-wrap: wrap;
-  border-radius: 10px;
-  padding: 20px;
   width: 50%;
-  margin: 20px;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
 
-  .prod-info {
-    width: 100%;
-    text-align: center;
-
-    .title {
-      font-size: 25px;
-      font-weight: bold;
-      margin-bottom: 20px;
-      color: #333;
-    }
-
-    .graph-select {
-      display: flex;
-      margin-top: 20px;
-      margin-bottom: 20px;
-      justify-content: end;
-      margin-right: 30px;
-      color: #333;
-      font-weight: 700;
-    }
-  }
-
-  ${mq.maxWidth("md")`
-        width: 100%;
-    `}
-`;
+  .sales-container {
+     padding: 20px;
+     box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+     border-radius: 10px;
+     width: 100%;
+ 
+     .bestprod-info {
+       width: 100%;
+       text-align: center;
+ 
+       .title {
+         font-size: 25px;
+         font-weight: bold;
+         margin-bottom: 20px;
+         color: #333;
+       }
+ 
+       .graph-select {
+         display: flex;
+         margin-top: 20px;
+         margin-bottom: 20px;
+         justify-content: end;
+         margin-right: 30px;
+         color: #333;
+         font-weight: 700;
+       }
+     }
+ 
+     ${mq.maxWidth("md")`
+         width: 100%;
+     `}
+   }
+ `;
+ 
 
 const BestProdDashBoard = memo(() => {
   /** 기본데이터 처리 */
@@ -68,6 +73,7 @@ const BestProdDashBoard = memo(() => {
 
   return (
     <BestProdDashBoardContainer>
+       <div className="bestprod-container">
       <Spinner loading={loading} />
       {/* /* 인기상품 그래프 */}
       <div className="prod-info">
@@ -84,6 +90,7 @@ const BestProdDashBoard = memo(() => {
         {/* 선택된 그래프를 조건부로 렌더링 */}
         {selectedGraph === "monthly" && <BestProdMGraph />}
         {selectedGraph === "weekly" && <BestProdWGraph />}
+      </div>
       </div>
     </BestProdDashBoardContainer>
   );

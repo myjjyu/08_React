@@ -27,7 +27,7 @@ const BestProdMGraphContainer = styled.div`
    width: 100%;
 
 .container {
-  height: 500px;
+  height: 300px;
 }
 
 ${mq.maxWidth("md")`
